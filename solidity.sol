@@ -40,7 +40,7 @@ contract NftCount {
 }
 
 contract DataTypes {
-    // Booleans
+    // Boolean
     bool public isEmailVerified;
     bool public isRegistered = true;
 
@@ -59,4 +59,17 @@ contract DataTypes {
     int8 public i8 = -1;
     int public i256 = 456;
     int public intnegative256 = -56;
+
+    // min and mad max
+    int public minInt = type(int104).min;
+    int public maxInt = type(int256).max;
+
+    // Arrays
+    // Two types of array fixed-sized and dynamic sized
+    bytes1 public a = 0x32; //[10101]
+    bytes1 public b = 0xb3; //[10101]
+
+    // address
+    address public hey;
+    address public addr = 0x1F50eA64C89D5620b3Dbe023A5AD4c0fFbbcaDB7;
 }
