@@ -73,3 +73,22 @@ contract DataTypes {
     address public hey;
     address public addr = 0x1F50eA64C89D5620b3Dbe023A5AD4c0fFbbcaDB7;
 }
+
+contract Functions {
+    uint256 public num = 324;
+
+    function getInfo() public view returns (uint) {
+        return num;
+    }
+
+    function updateInfo(uint newName) public returns (uint) {
+        num = newName;
+        return newName;
+    }
+
+    function add(uint a, uint b) public returns (uint sum) {
+        sum = a + b;
+        num = sum;
+        return sum;
+    }
+}
