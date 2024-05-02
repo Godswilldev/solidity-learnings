@@ -92,3 +92,24 @@ contract Functions {
         return sum;
     }
 }
+
+contract StateVariables {
+    // ex of state variables
+    string public defaultText = "Hey Greg";
+    uint public defaultNum = 2334;
+    int public defaultInt = -43;
+    bytes public defaultBytes = "Hey Default Byte"; // the output for bytes always starts with 0x
+    uint[] public myNumber = [23];
+
+    // Updating state variables
+    constructor(string memory _text, uint _no) public {
+        defaultText = _text;
+        defaultNum = _no;
+    }
+
+    // Updating state variables
+    function update(string memory _text, uint _no) public {
+        defaultText = _text;
+        defaultNum = _no;
+    }
+}
