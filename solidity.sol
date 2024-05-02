@@ -102,14 +102,58 @@ contract StateVariables {
     uint[] public myNumber = [23];
 
     // Updating state variables
-    constructor(string memory _text, uint _no) public {
-        defaultText = _text;
-        defaultNum = _no;
-    }
+    // constructor(string memory _text, uint _no) public {
+    //     defaultText = _text;
+    //     defaultNum = _no;
+    // }
 
     // Updating state variables
     function update(string memory _text, uint _no) public {
         defaultText = _text;
         defaultNum = _no;
+    }
+}
+
+contract LocalVariables {
+    // Local variables are variables defined inside the function scope
+    uint public myNumber;
+
+    function update() public pure returns (uint) {
+        uint i = 344;
+        return i;
+    }
+}
+
+contract GlobalVariables {
+    address public ownerAddress;
+    address public myBlochHash;
+    uint public gasLImit;
+    uint public number;
+    uint public timpstamp;
+    uint public value;
+    uint public nowOn;
+    address public origin;
+    address public sender;
+    uint public gasPrice;
+    bytes public callData;
+
+    constructor() {
+        // This is the address of whoever deploys the contract
+        ownerAddress = msg.sender;
+
+        myBlochHash = block.coinbase;
+        gasLImit = block.gaslimit;
+        number = block.number;
+        timpstamp = block.timestamp;
+        value = block.prevrandao;
+        origin = tx.origin;
+        callData = msg.data;
+        gasPrice = tx.gasprice;
+        sender = msg.sender;
+    }
+
+    function update() public pure returns (uint) {
+        uint i = 344;
+        return i;
     }
 }
