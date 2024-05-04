@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.25;
 
+/*
 contract MyfirstContract {
     string public name = "godswill";
     uint256 public age = 23;
@@ -140,12 +141,11 @@ contract GlobalVariables {
     constructor() {
         // This is the address of whoever deploys the contract
         ownerAddress = msg.sender;
-
         myBlochHash = block.coinbase;
         gasLImit = block.gaslimit;
         number = block.number;
         timpstamp = block.timestamp;
-        value = block.prevrandao;
+        // value = block.prevrandao;
         origin = tx.origin;
         callData = msg.data;
         gasPrice = tx.gasprice;
@@ -157,3 +157,55 @@ contract GlobalVariables {
         return i;
     }
 }
+
+contract EventTicket {
+    uint256 public numberOFTicket;
+    uint256 public ticketPrice;
+    uint256 public totalAmount;
+    uint256 public startAt;
+    uint256 public endAt;
+    uint256 public timeRange;
+    string public message = "Buy your first ticket";
+
+    constructor(uint256 _ticketPrice) {
+        ticketPrice = _ticketPrice;
+        startAt = block.timestamp;
+        endAt = block.timestamp + 7 days;
+
+        timeRange = endAt - startAt / 60 / 60 / 24;
+    }
+
+    function buyTicket(uint256 _value) public returns (uint256 tickedId) {
+        numberOFTicket++;
+        totalAmount += _value;
+        tickedId = numberOFTicket;
+
+        return tickedId;
+    }
+
+    function getAmount() public view returns (uint256 amount) {
+        return totalAmount;
+    }
+
+
+// Constants is good for saving gas fees
+contract Constants {
+    address public constant myAddress = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+
+    function getConstant() public pure returns (address) {
+        return myAddress;
+    }
+}
+
+}
+
+
+*/
+
+/**
+ * @title EventTicket
+ * @dev EventTicketDescription
+ * @custom:dev-run-script contracts/solidity.sol
+ */
+
+contract IfElseContract {}
