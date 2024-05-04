@@ -208,4 +208,21 @@ contract Constants {
  * @custom:dev-run-script contracts/solidity.sol
  */
 
-contract IfElseContract {}
+contract IfElseContract {
+    uint public myNum = 5;
+    string public myString = "GReg";
+
+    function get(uint _num) public returns (string memory) {
+        if (_num == 5) {
+            myString = "Value of myNum is 5";
+        } else {
+            myString = "Value of myNum is 5";
+        }
+
+        return myString;
+    }
+
+    function shortHand(uint _num) public pure returns (string memory) {
+        return _num == 5 ? "Value of myNum is 5" : "Value of myNum is 5";
+    }
+}
