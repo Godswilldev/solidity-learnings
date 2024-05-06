@@ -217,15 +217,6 @@ contract IfElseContract {
         return _num == 5 ? "Value of myNum is 5" : "Value of myNum is 5";
     }
 }
-
-*/
-
-/**
- * @title EventTicket
- * @dev EventTicketDescription
- * @custom:dev-run-script contracts/solidity.sol
- */
-
 contract ErrorHandlers {
     function errorHandling(uint _num) public pure returns (string memory) {
         require(_num >= 10, "Invalid input");
@@ -287,3 +278,49 @@ contract B {
 
 // contract C inherits both contract A & B
 contract C is A("Default Text"), B(true) {}
+
+*/
+
+/**
+ * @title EventTicket
+ * @dev EventTicketDescription
+ * @custom:dev-run-script contracts/solidity.sol
+ */
+
+// MAppings
+
+contract Arrays {
+    uint[] public arr;
+    uint[] public arr2 = [1, 2, 3];
+    uint[10] public fixedSizedArray;
+
+    function get(uint i) public view returns (uint) {
+        return arr[i];
+    }
+
+    function getArr() public view returns (uint[] memory) {
+        return arr;
+    }
+
+    function push(uint i) public {
+        arr.push(i);
+    }
+
+    function pop() public {
+        arr.pop();
+    }
+
+    function length() public view {
+        arr.length;
+    }
+
+    function remove(uint i) public {
+        // delete doesn't change the array length
+        // It resets the value at i dex to it's default value (0)
+        delete arr[i];
+    }
+
+    function examples() external {
+        uint[] memory a = new uint[](5);
+    }
+}
