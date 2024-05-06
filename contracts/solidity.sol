@@ -352,3 +352,40 @@ contract Enums {
         delete status;
     }
 }
+
+contract Structs {
+    struct Todo {
+        string text;
+        bool completed;
+    }
+
+    Todo[] public todos;
+
+    function create(string calldata _text) public returns (Todo[] memory) {
+        // method 1
+        // todos.push(Todo(_text, false));
+
+        // method 2
+        todos.push(Todo({ completed: false, text: _text }));
+
+        return todos;
+    }
+
+    function getTodos(uint _index) public view returns (string memory text, bool completed) {
+        Todo storage todo = todos[_index];
+
+        return (todo.text, todo.completed);
+    }
+
+    function updateTetx(uint _index, string calldata _text) public returns (Todo memory) {
+        Todo storage todo = todos[_index];
+        todo.text = _text;
+        return todo;
+    }
+
+    function toggleCompleted(uint _index) public returns (Todo memory) {
+        Todo storage todo = todos[_index];
+        todo.completed = !todo.completed;
+        return todo;
+    }
+}
