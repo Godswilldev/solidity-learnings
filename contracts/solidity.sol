@@ -199,15 +199,6 @@ contract Constants {
 
 }
 
-
-*/
-
-/**
- * @title EventTicket
- * @dev EventTicketDescription
- * @custom:dev-run-script contracts/solidity.sol
- */
-
 contract IfElseContract {
     uint public myNum = 5;
     string public myString = "GReg";
@@ -226,3 +217,73 @@ contract IfElseContract {
         return _num == 5 ? "Value of myNum is 5" : "Value of myNum is 5";
     }
 }
+
+*/
+
+/**
+ * @title EventTicket
+ * @dev EventTicketDescription
+ * @custom:dev-run-script contracts/solidity.sol
+ */
+
+contract ErrorHandlers {
+    function errorHandling(uint _num) public pure returns (string memory) {
+        require(_num >= 10, "Invalid input");
+        assert(_num <= 20);
+        revert("Number not allowed");
+    }
+}
+
+contract Modifier {
+    // Modifiers are code that can be run before and after the function call
+    // Generally used for 3 reasons, 1. to restrict access, VAlidate inputs, Guard agaimst reentrancy hacks
+    address public owner;
+    uint public x = 10;
+    bool public locked = false;
+
+    constructor() {
+        owner = msg.sender;
+    }
+    // restrict access
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not Owner");
+        _;
+    }
+
+    // validate inputs
+    modifier validateData(address _addr) {
+        require(_addr != address(0), "Not valid address");
+        _;
+    }
+
+    modifier noReentrancy() {
+        require(!locked, "No reEntrancy");
+        locked = true;
+        _;
+        locked = false;
+    }
+
+    function changeOwner(address _newAddress) public onlyOwner validateData(_newAddress) {
+        owner = _newAddress;
+    }
+}
+
+// Constructor and Inheritance
+contract A {
+    string public text;
+
+    constructor(string memory _name) {
+        text = _name;
+    }
+}
+
+contract B {
+    bool public isEmailVerified;
+
+    constructor(bool verified) {
+        isEmailVerified = verified;
+    }
+}
+
+// contract C inherits both contract A & B
+contract C is A("Default Text"), B(true) {}
